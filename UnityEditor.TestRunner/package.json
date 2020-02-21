@@ -1,0 +1,10 @@
+{
+  "name": "com.taphos.unity-uitest",
+  "version": "1.2.3",
+  "displayName": "unity-uitest",
+  "description": "This is an example package",
+  "unity": "2019.2",
+  "author": {
+    "name": "taphos"
+  }
+}
