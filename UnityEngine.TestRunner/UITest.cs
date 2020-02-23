@@ -62,32 +62,28 @@ public class UITest
         return StartCoroutine(AssertLabelInternal(id, text));
     }
 
-    //
-    protected Coroutine SelectDrogdown(string targetName, int value)
+    protected Coroutine SelectDropdown(string targetName, int value)
     {
-        return StartCoroutine(SelectDrogdownInternal(targetName, value));
+        return StartCoroutine(SelectDropdownInternal(targetName, value));
     }
 
-    protected Coroutine SelectDrogdown(GameObject o, int value)
+    protected Coroutine SelectDropdown(GameObject o, int value)
     {
-        return StartCoroutine(SelectDrogdownInternal(o, value));
+        return StartCoroutine(SelectDropdownInternal(o, value));
     }
 
-    IEnumerator SelectDrogdownInternal(string targetName, int value)
+    IEnumerator SelectDropdownInternal(string targetName, int value)
     {
         var buttonAppeared = new ObjectAppeared(targetName);
-        yield return WaitFor(buttonAppeared);
-        yield return SelectDrogdown(buttonAppeared.o, value);
+        var o = GameObject.Find(targetName);
+        yield return SelectDropdown(o, value);
     }
 
-    IEnumerator SelectDrogdownInternal(GameObject o, int value)
+    IEnumerator SelectDropdownInternal(GameObject o, int value)
     {
-        yield return WaitFor(new DropdownAccessible(o));
-        Debug.Log("Button pressed: " + o);
         o.GetComponent<Dropdown>().value = value;
         yield return null;
     }
-    //
 
     protected Coroutine Press(string buttonName)
     {
